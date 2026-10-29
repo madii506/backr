@@ -37,7 +37,7 @@ async function vaults() {
     list.push({
       a: s.vaultAddress, n: String(s.name || '').trim().slice(0, 60) || 'Unnamed vault', l: s.leader || '',
       tvl: num(s.tvl), apr: num(v.apr) * 100, d30: lastOf(month), all: lastOf(all),
-      t0: num(s.createTimeMillis), sp: series(month, 32),
+      d7: lastOf(period(v.pnls, 'week')), t0: num(s.createTimeMillis), sp: series(month, 32),
     });
   }
   list.sort((x, y) => y.tvl - x.tvl);
